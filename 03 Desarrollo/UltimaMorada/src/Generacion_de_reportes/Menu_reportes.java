@@ -52,6 +52,11 @@ public class Menu_reportes extends javax.swing.JFrame {
         btnHistorial.setForeground(new java.awt.Color(255, 255, 255));
         btnHistorial.setText("Consultar historial de pago");
         btnHistorial.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
 
         btnConsulta1.setBackground(new java.awt.Color(0, 0, 0));
         btnConsulta1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
@@ -91,7 +96,7 @@ public class Menu_reportes extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnConsulta1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,6 +165,8 @@ public class Menu_reportes extends javax.swing.JFrame {
 
     private void btnCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorteActionPerformed
         // TODO add your handling code here:
+        Consulta_de_corte_de_caja verconsulta = new Consulta_de_corte_de_caja();
+        verconsulta.setVisible(true);
     }//GEN-LAST:event_btnCorteActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -167,6 +174,14 @@ public class Menu_reportes extends javax.swing.JFrame {
         
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        // TODO add your handling code here:
+       
+        Consulta_de_historial_de_pago verconsulta = new Consulta_de_historial_de_pago();
+        verconsulta.setVisible(true);  
+        
+    }//GEN-LAST:event_btnHistorialActionPerformed
 
     /**
      * @param args the command line arguments
