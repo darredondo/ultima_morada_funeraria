@@ -12,20 +12,19 @@ import java.sql.ResultSet;
  *
  * @author Usuario
  */
-class ControlReportes {
-
-    public ResultSet obtenerContratos() {
-        String SQL="SELECT * FROM contrato";
+public class ControlReportes3 {
+            
+        public ResultSet obtenerCorte() {
+        String SQL="SELECT * FROM pago";
         BDconexion conexion=new BDconexion();
         conexion.conectar();
         ResultSet resultado=conexion.ejecutarConsulta(SQL);
         return resultado;
     }
     
-    
-    
-    ResultSet obtenerContratos(String text) {
-        String SQL = "SELECT * FROM contrato where nombre LIKE '%?1%' order by Nombre";
+
+         ResultSet obtenerCorte(String text) {
+        String SQL = "SELECT * FROM pago where idPago LIKE '%?1%' order by idPago";
         SQL = SQL.replace("?1", text);
         try {
             BDconexion conexion = new BDconexion();
@@ -36,8 +35,6 @@ class ControlReportes {
             System.out.println(ex.toString());
             return null;
         }
-        
-        
         
     }
     

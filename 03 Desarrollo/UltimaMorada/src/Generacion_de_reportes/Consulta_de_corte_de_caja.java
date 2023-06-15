@@ -5,6 +5,9 @@
  */
 package Generacion_de_reportes;
 
+import Commons.Convertidor;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Usuario
@@ -16,6 +19,8 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
      */
     public Consulta_de_corte_de_caja() {
         initComponents();
+        
+        this.consultar();
     }
 
     /**
@@ -29,9 +34,12 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        TxtBuscar = new javax.swing.JTextField();
+        BtnBuscar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TCorte = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,15 +49,20 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Consulta de corte de caja");
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        TxtBuscar.setBackground(new java.awt.Color(0, 0, 0));
+        TxtBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        TxtBuscar.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnBuscar.setBackground(new java.awt.Color(0, 0, 0));
+        BtnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        BtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnBuscar.setText("Buscar");
+        BtnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
@@ -61,6 +74,27 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
             }
         });
 
+        TCorte.setBackground(new java.awt.Color(0, 0, 0));
+        TCorte.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TCorte.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        TCorte.setForeground(new java.awt.Color(255, 255, 255));
+        TCorte.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(TCorte);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Consulte el corte de caja por medio del id pincipal");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -68,28 +102,39 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(196, 196, 196)
-                        .addComponent(jButton2)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnBuscar))
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(76, 76, 76))
         );
@@ -98,13 +143,13 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,6 +159,19 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+         // Declaramos un control para obtener la información
+        ControlReportes3 control3=new ControlReportes3();
+        //Obtenemos la información de los departamentos que coinciden con el filtro de busqueda
+        ResultSet ListaContratos=control3.obtenerCorte(TxtBuscar.getText());
+        //Tranformamo el ResulSet a un modelo de tabla par averlo en pantalla
+        TCorte.setModel(Convertidor.convertir(ListaContratos));
+        
+        
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,10 +209,20 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtnBuscar;
+    private javax.swing.JTable TCorte;
+    private javax.swing.JTextField TxtBuscar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+ 
+    private void consultar() {
+        ControlReportes2 control=new ControlReportes2();
+        ResultSet ListaContratos=control.obtenerHistorial();
+        TCorte.setModel(Convertidor.convertir(ListaContratos));
+    }
+
 }

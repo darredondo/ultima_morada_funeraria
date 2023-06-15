@@ -35,9 +35,9 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TxtBuscar = new javax.swing.JTextField();
         btnRegresar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BtnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tcontratos = new javax.swing.JTable();
 
@@ -52,14 +52,14 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Consulte los contratos existentes");
+        jLabel3.setText("Consulte los contratos existentes por el nombre");
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        TxtBuscar.setBackground(new java.awt.Color(0, 0, 0));
+        TxtBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        TxtBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        TxtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TxtBuscarActionPerformed(evt);
             }
         });
 
@@ -74,11 +74,16 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Buscar");
-        jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BtnBuscar.setBackground(new java.awt.Color(0, 0, 0));
+        BtnBuscar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
+        BtnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnBuscar.setText("Buscar");
+        BtnBuscar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        BtnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarActionPerformed(evt);
+            }
+        });
 
         Tcontratos.setBackground(new java.awt.Color(0, 0, 0));
         Tcontratos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -103,14 +108,10 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel3))
+                .addGap(154, 154, 154)
+                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -124,19 +125,22 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
                         .addGap(139, 139, 139))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(224, 224, 224))))
+                        .addGap(224, 224, 224))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
@@ -164,9 +168,19 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TxtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TxtBuscarActionPerformed
+
+    private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
+        // TODO add your handling code here:
+         // Declaramos un control para obtener la información
+        ControlReportes control=new ControlReportes();
+        //Obtenemos la información de los departamentos que coinciden con el filtro de busqueda
+        ResultSet ListaContratos=control.obtenerContratos(TxtBuscar.getText());
+        //Tranformamo el ResulSet a un modelo de tabla par averlo en pantalla
+        Tcontratos.setModel(Convertidor.convertir(ListaContratos));
+    }//GEN-LAST:event_BtnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,14 +218,14 @@ public class Consulta_de_contratos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBuscar;
     private javax.swing.JTable Tcontratos;
+    private javax.swing.JTextField TxtBuscar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 
     private void consultar() {
