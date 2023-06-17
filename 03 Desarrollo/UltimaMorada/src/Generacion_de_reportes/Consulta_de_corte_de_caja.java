@@ -134,7 +134,7 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
                     .addComponent(BtnBuscar))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(76, 76, 76))
         );
@@ -147,9 +147,7 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -161,9 +159,7 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
-        // TODO add your handling code here:
-         // TODO add your handling code here:
-         // Declaramos un control para obtener la información
+
         ControlReportes3 control3=new ControlReportes3();
         //Obtenemos la información de los departamentos que coinciden con el filtro de busqueda
         ResultSet ListaContratos=control3.obtenerCorte(TxtBuscar.getText());
@@ -220,8 +216,8 @@ public class Consulta_de_corte_de_caja extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
  
     private void consultar() {
-        ControlReportes2 control=new ControlReportes2();
-        ResultSet ListaContratos=control.obtenerHistorial();
+        ControlReportes3 control=new ControlReportes3();
+        ResultSet ListaContratos=control.obtenerCorte();
         TCorte.setModel(Convertidor.convertir(ListaContratos));
     }
 

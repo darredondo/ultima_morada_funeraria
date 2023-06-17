@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 public class ControlReportes3 {
             
         public ResultSet obtenerCorte() {
-        String SQL="SELECT * FROM pago";
+        String SQL="SELECT * FROM corte_de_caja";
         BDconexion conexion=new BDconexion();
         conexion.conectar();
         ResultSet resultado=conexion.ejecutarConsulta(SQL);
@@ -24,7 +24,7 @@ public class ControlReportes3 {
     
 
          ResultSet obtenerCorte(String text) {
-        String SQL = "SELECT * FROM pago where idPago LIKE '%?1%' order by idPago";
+        String SQL = "SELECT * FROM corte_de_caja where id_corte LIKE '%?1%' order by id_corte";
         SQL = SQL.replace("?1", text);
         try {
             BDconexion conexion = new BDconexion();
